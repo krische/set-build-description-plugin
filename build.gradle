@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url 'http://repo.jenkins-ci.org/releases/'
+        }
+    }
+    dependencies {
+        classpath 'org.jenkins-ci.tools:gradle-jpi-plugin:0.13.0'
+    }
+}
+
+apply plugin: 'org.jenkins-ci.jpi'
+
+
+group = "org.jenkins-ci.plugins"
+version = "0.0.1-SNAPSHOT"    // Or whatever your version is.
+description = "Set a job's description with post build step"
+
+jenkinsPlugin {
+    coreVersion = '1.420'
+    displayName = 'Set Build Description'
+    url = 'http://wiki.jenkins-ci.org/display/JENKINS/Set+Build+Description'
+    gitHubUrl = 'https://github.com/krische/set-build-description-plugin'
+    shortName = 'set-build-description'
+    
+    developers {
+        developer {
+            id 'krische'
+            name 'Brian Krische'
+            email 'krische@gmail.com'
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.8'
+}
